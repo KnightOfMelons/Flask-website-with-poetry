@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+{{ super() }}
+<hr>
+<h2>List of poems</h2>
+<ul>
+    {% for p in posts %}
+    <li>
+        <p class="title">
+            <a href="{{ url_for('show_post', post_id=p.url) }}">{{ p.title }}</a>
+        </p>
+        <div class="announce">{{ p.text[:300] | striptags }}...</div>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
